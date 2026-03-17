@@ -40,38 +40,56 @@ docker exec -it aiflowlearn-llm bash
 ### Stage 1: 微调基础
 ```bash
 git checkout stage-1-basics
-python scripts/compare_models.py
+cat README_STAGE1.md  # 阅读学习指南
+python stage1_basics.py
 ```
+
+**学习目标**：理解预训练 vs 微调、模型加载、基础推理
 
 ### Stage 2: LoRA 原理
 ```bash
 git checkout stage-2-lora
-python scripts/lora_demo.py
+cat README_STAGE2.md
+python stage2_lora.py
 ```
+
+**学习目标**：理解 LoRA 原理、参数配置、对比全量微调
 
 ### Stage 3: 数据工程
 ```bash
 git checkout stage-3-data
-python scripts/prepare_data.py
+cat README_STAGE3.md
+python stage3_data.py
 ```
+
+**学习目标**：数据清洗、Alpaca 格式、质量检查
 
 ### Stage 4: 训练优化
 ```bash
 git checkout stage-4-training
-python scripts/train.py
+cat README_STAGE4.md
+python stage4_training.py
 ```
+
+**学习目标**：训练超参数、监控指标、优化技巧
 
 ### Stage 5: 量化部署
 ```bash
 git checkout stage-5-deploy
-python scripts/quantize.py
+cat README_STAGE5.md
+python stage5_deploy.py
 ```
+
+**学习目标**：模型量化、权重合并、推理优化
 
 ### Stage 6: 模型评估
 ```bash
 git checkout stage-6-eval
-python scripts/evaluate.py
+cat README_STAGE6.md
+python stage6_eval.py
 ```
+
+**学习目标**：评估指标、自动评估、人工评估、效果对比
 
 ## 模型说明
 
