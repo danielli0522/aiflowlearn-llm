@@ -1,0 +1,55 @@
+# AIFlowLearn LLM 微调基础配置
+
+# 模型配置
+model:
+  name: "Qwen/Qwen2.5-0.5B"
+  local_path: "/app/models/Qwen2.5-0.5B"
+  max_length: 2048
+  trust_remote_code: true
+
+# LoRA 配置
+lora:
+  r: 8                    # LoRA rank
+  lora_alpha: 16          # LoRA alpha
+  lora_dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+  bias: "none"
+  task_type: "CAUSAL_LM"
+
+# 训练配置
+training:
+  output_dir: "/app/outputs"
+  num_train_epochs: 3
+  per_device_train_batch_size: 4
+  per_device_eval_batch_size: 4
+  gradient_accumulation_steps: 4
+  learning_rate: 2.0e-4
+  weight_decay: 0.01
+  warmup_steps: 100
+  logging_steps: 10
+  save_steps: 500
+  eval_steps: 500
+  save_total_limit: 3
+  fp16: true              # 使用混合精度训练
+  gradient_checkpointing: true
+  optim: "adamw_torch"
+
+# 数据配置
+data:
+  train_file: "/app/data/processed/train.jsonl"
+  val_file: "/app/data/processed/val.jsonl"
+  max_samples: null       # null 表示使用全部数据
+
+# 量化配置（可选）
+quantization:
+  load_in_8bit: false
+  load_in_4bit: false
+
+# 评估配置
+evaluation:
+  metric: "perplexity"
+  eval_strategy: "steps"

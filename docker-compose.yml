@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  aiflowlearn-llm:
+    build: .
+    container_name: aiflowlearn-llm
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - HF_ENDPOINT=https://hf-mirror.com  # 国内镜像加速
+    volumes:
+      - ./:/workspace
+      - models-cache:/workspace/models
+      - data-cache:/workspace/data
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+volumes:
+  models-cache:
+  data-cache:

@@ -1,0 +1,23 @@
+# 深度学习框架
+torch>=2.0.0
+transformers>=4.36.0
+accelerate>=0.25.0
+
+# PEFT 微调
+peft>=0.7.0
+bitsandbytes>=0.41.0
+
+# 数据处理
+datasets>=2.14.0
+pandas>=2.0.0
+
+# 模型下载
+huggingface-hub>=0.19.0
+
+# 训练监控
+tensorboard>=2.14.0
+tqdm>=4.65.0
+
+# 工具
+pyyaml>=6.0
+numpy>=1.24.0
